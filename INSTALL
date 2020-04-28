@@ -1,0 +1,16 @@
+pip install gpxpy
+pip install ipyleaflet
+pip install geopy
+pip install matplotlib
+pip install jupyter
+pip install ipywidgets (pas forcément nécessaire)
+
+(il faut peut être installer jupyter-lab: pip install jupyterlab)
+----------------------------------------------------------------------
+apt-get install nodejs npm
+jupyter nbextension enable --py widgetsnbextension
+
+Si jupyterlab est nécessaire:
+jupyterlab
+jupyter labextension install @jupyter-widgets/jupyterlab-manager
+----------------------------------------------------------------------
