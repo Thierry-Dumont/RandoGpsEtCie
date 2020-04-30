@@ -3,13 +3,13 @@ Using python tools for gps tracks, maps and so on.
 
 But it's in french.
 
-Les applications (smartphone) comme Geo Tracker permettent de récupérer les traces gps sous forme de fichiers .gpx.
+Les applications (smartphone) comme Locus Map ou Geo Tracker permettent de récupérer les traces gps sous forme de fichiers .gpx.
 
 Utilisation
 
 - Installer les packages (voir INSTALL).
 
-- jupyter notebook
+- lancer: jupyter notebook
 
 
 
