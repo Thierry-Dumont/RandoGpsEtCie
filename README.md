@@ -7,7 +7,7 @@ Les applications (smartphone) comme Locus Map ou Geo Tracker permettent de récu
 
 Utilisation
 
-- Installer les packages (voir INSTALL).
+- Installer les packages (voir INSTALL.md).
 
 - lancer: jupyter notebook
 
