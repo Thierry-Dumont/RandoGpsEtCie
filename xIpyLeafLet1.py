@@ -3,7 +3,7 @@
 
 # In[1]:
 
-from ipyleaflet import Map, Marker,Polyline, FullScreenControl, WidgetControl, MarkerCluster, basemaps, AntPath
+from ipyleaflet import Map, Marker,Polyline, FullScreenControl, WidgetControl, MarkerCluster,CircleMarker, basemaps, AntPath
 from ipywidgets import IntSlider,jslink
 import gpxpy
 import geopy.distance as distance
@@ -43,7 +43,7 @@ gpx_file= open(filegpx,"r")
 gpx = gpxpy.parse(gpx_file)
 points=gpx.tracks[0].segments[0].points
 
-
+print("Heure de début : ",gpx.get_time_bounds().start_time,"Heure de fin :",gpx.get_time_bounds().end_time)
 # Il faut centrer la carte. Pour cela on calcule la moyenne des latitudes et des longitudes:
 
 # In[24]:
@@ -149,7 +149,19 @@ marker_cluster = MarkerCluster(
 )
 m.add_layer(marker_cluster);
 
-
+# Des marqueurs pour le début et la fin du parcours :
+circle_marker1 = CircleMarker()
+circle_marker1.location = (points[-1].latitude,points[-1].longitude)
+circle_marker1.radius = 7
+circle_marker1.color = "red"
+circle_marker1.fill_color = "white"
+circle_marker2 = CircleMarker()
+circle_marker2.location = (points[0].latitude,points[0].longitude)
+circle_marker2.radius = 7
+circle_marker2.color = "green"
+circle_marker2.fill_color = "green"
+m.add_layer(circle_marker2)
+m.add_layer(circle_marker1)
 # ### La carte : ###
 # 
 # _(zoomez éventuellement pour voir tous les marqueurs)._
