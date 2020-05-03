@@ -7,6 +7,7 @@ Avec "pip" (mais on peut sûrement utiliser conda):
 - pip install ipyleaflet
 - pip install geopy
 - pip install matplotlib
+- pip install bokeh
 - pip install jupyter
 - pip install ipywidgets (pas forcément nécessaire, avec les dernières
                         versions de jupyter)
