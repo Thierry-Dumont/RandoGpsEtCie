@@ -1,5 +1,11 @@
 # Paquets python3 à installer :
 
+Installer pip pour python3:
+
+- apt install python3-pip
+
+(ou la commande correspondante si votre système n'est pas "à la Debian".)
+
 Avec "pip" (mais on peut sûrement utiliser conda):
 (ajouter l'option --user --user pour installer dans votre home dir.).
 
