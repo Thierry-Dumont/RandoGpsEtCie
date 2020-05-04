@@ -13,13 +13,13 @@ Les applications (smartphone) comme "Locus Map" ou "Geo Tracker" permettent de r
 
 ### Installation ###
 
-- Installer les packages nécessaires (voir INSTALL.md).
+- Installez les packages nécessaires (voir INSTALL.md).
 
 ### Utilisation : ###
 
-- lancer: jupyter notebook
+- lancez: jupyter notebook
 
-- et cliquez sur le notebook que vous voulez utiliser (les notebooks sont les fichiers d'xtension .ipynb).
+- et cliquez sur le notebook que vous voulez utiliser (les notebooks sont les fichiers d'extension .ipynb).
 
 ### Il y a deux notebooks: ###
 
