@@ -24,8 +24,6 @@ Il y a deux notebooks:
 
 Note : bokey est une alternative à Matplotlib (plus) agréable que Matplotlib.
 
------------------------------
 
-ZZZ! Sous Github, on ne peut pas rendre les cartes, et donc si vous cliquez sur le notebook...pas de carte (il faut node.js...).
------------------------------
+ Attention! Sous Github, on ne peut pas rendre les cartes, et donc si vous cliquez sur les notebooks ici...pas de carte (il faut node.js...).
 
