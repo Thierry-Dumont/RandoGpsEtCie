@@ -1,7 +1,7 @@
 # Paquets python3 à installer :
 
 Avec "pip" (mais on peut sûrement utiliser conda):
-(avec évetuellement l'option --user).
+(ajouter l'option --user --user pour installer dans votre home dir.).
 
 - pip install gpxpy
 - pip install ipyleaflet
@@ -16,11 +16,11 @@ Avec "pip" (mais on peut sûrement utiliser conda):
 
 # Il faut aussi installer node:
 
-- apt-get install nodejs npm
+- sudo apt-get install nodejs npm
 
 # Installer leaflet:
 
-- npm install leaflet
+- sudo npm install leaflet
 
 # Activer l'extension widgets :
 

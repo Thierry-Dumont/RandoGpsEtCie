@@ -11,16 +11,18 @@ Utilisation
 
 - lancer: jupyter notebook
 
+- et cliquez sur le notebook que vous voulez utiliser.
+
 Il y a deux notebooks:
 
-- IpyLeafLet.ipynb : à utiliser pour comprendre comment ça marche.
+- IpyLeafLetExplained.ipynb : à utiliser pour comprendre comment ça marche.
 
-- UseScript.ipynb : lance un script python (extrait de  IpyLeafLet.ipynb).
+- IpyLeafLet.ipynb : lance un script python.
+  C'est le notebook à utiliser en  exploitation.
   Permet de "cacher la mécanique". On peut cacher tout le code en activant
-  "hidecode" dans les notebook extensions. C'est le notebook à utiliser en
-  exploitation.
+  "hidecode" dans les "notebook extensions". 
 
-Note : bokey est une alternatine (plus) agréable à Matplotlib.
+Note : bokey est une alternative à Matplotlib (plus) agréable que Matplotlib.
 
 -----------------------------
 
