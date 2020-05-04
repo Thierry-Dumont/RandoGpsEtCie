@@ -43,7 +43,7 @@ gpx_file= open(filegpx,"r")
 gpx = gpxpy.parse(gpx_file)
 points=gpx.tracks[0].segments[0].points
 
-print("Heure de début : ",gpx.get_time_bounds().start_time,"Heure de fin :",gpx.get_time_bounds().end_time)
+print("\nHeure de début : ",gpx.get_time_bounds().start_time,"Heure de fin :",gpx.get_time_bounds().end_time)
 # Il faut centrer la carte. Pour cela on calcule la moyenne des latitudes et des longitudes:
 
 # In[24]:
@@ -59,7 +59,7 @@ center=(c[0]/len(l),c[1]/len(l))# le "centre" (la moyenne).
 # In[25]:
 
 
-m = Map(basemap=usedmap,center=center, zoom=15)
+m = Map(basemap=usedmap,center=center, zoom=15,scroll_wheel_zoom=True)
 
 
 # On ajoute une petite tirette pour le zoom:
@@ -67,10 +67,10 @@ m = Map(basemap=usedmap,center=center, zoom=15)
 # In[26]:
 
 
-zoom_slider = IntSlider(description='Zoom:', min=12, max=30, value=15)
-jslink((zoom_slider, 'value'), (m, 'zoom'))
-widget_control1 = WidgetControl(widget=zoom_slider, position='topright')
-m.add_control(widget_control1)
+# zoom_slider = IntSlider(description='Zoom:', min=12, max=30, value=15)
+# jslink((zoom_slider, 'value'), (m, 'zoom'))
+# widget_control1 = WidgetControl(widget=zoom_slider, position='topright')
+# m.add_control(widget_control1)
 
 
 # Bien. Maintenant on ajoute la trajectoire, qu'on a déja calculée. On ajoute aussi un bouton "Plein écran".
@@ -120,7 +120,7 @@ delta=1000. # 1 km.
 
 distance_parcourue=0.0
 dists=[0.]
-next = 0.0
+next = delta
 marks=[]
 for i,point in enumerate(points[1:]):
     new=(point.latitude,point.longitude)
@@ -130,13 +130,14 @@ for i,point in enumerate(points[1:]):
     dists.append(distance_parcourue)
     if distance_parcourue >= next:
         next += delta
-        marks.append(Marker(location=(point.latitude,point.longitude)))
+        marks.append(Marker(location=(point.latitude,point.longitude),\
+                            draggable=False))
 
 
 # In[31]:
 
 
-print("\nDistance totale parcourue :",distance_parcourue,"mêtres.")
+print("Distance totale parcourue : %8.2f"%distance_parcourue,"mêtres.")
 
 
 # Placer les marqueurs sur la carte:
@@ -201,7 +202,7 @@ down= reduce(lambda a,b: a+max(-b,0),z)
 # In[36]:
 
 
-print("montée :",up,", descente :",down,"(mêtres).")
+print("montée :%8.2f"% up,", descente :%8.2f"% down,"(mêtres).")
 
 
 # ### Vitesse (en km/h) en fonction du temps (en secondes) : ###
