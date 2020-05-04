@@ -13,7 +13,9 @@ def get_gpx():
             if choix in range(0,len(lf)):
                 return lf[choix]
 def choose(l):
-    #choose in a dict
+    #
+    #choose in a list of maps proviers.
+    #
     print("Cartes disponibles :")
     for s in  enumerate(l.keys()):
         print(s[0],": ",s[1])
