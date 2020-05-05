@@ -23,12 +23,12 @@ Les applications (smartphone) comme "Locus Map" ou "Geo Tracker" permettent de r
 
 ### Il y a deux notebooks: ###
 
-- IpyLeafLetExplained.ipynb : à utiliser pour comprendre comment ça marche.
-
-- IpyLeafLet.ipynb : lance un script python.
+- RandoGPS.ipynb : lance un script python.
   C'est le notebook à utiliser en  exploitation.
   Permet de "cacher la mécanique". On peut cacher tout le code en activant
   "hidecode" dans les "notebook extensions". 
+
+- RandoGPSExplained.ipynb : à utiliser pour comprendre comment ça marche.
 
 Note : pour les courbes, bokey est une alternative à Matplotlib (plus) agréable que Matplotlib.
 
