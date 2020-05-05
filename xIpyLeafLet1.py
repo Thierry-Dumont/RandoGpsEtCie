@@ -162,6 +162,5 @@ pdec= figure(title="Vitesse / déclivité ", x_axis_label='declivité', y_axis_l
 pdec.circle(dec,[3.6*x[0] for x in vt],size=6, color="red", alpha=0.5)
 
 show(column(p,pv,pdec))
-
 # -fin.
 
