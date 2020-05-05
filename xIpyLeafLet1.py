@@ -155,7 +155,13 @@ print("Vitesse moyenne:","%6.2f"% (3.6*distance_parcourue/(points[-1].time - poi
 
 display(m)
 
-show(column(p,pv))
+#vitesse fonction de la déclivité
+dec0= [x[1]-x[0] for x in zip([point.elevation for point in points[1:]],[point.elevation for point in points[:-1]])]
+dec = [x[0] for x in zip(dec0,z) if x[1][0]>0]
+pdec= figure(title="Vitesse / déclivité ", x_axis_label='declivité', y_axis_label='Vitesse (km/h)',width=800,height=300)
+pdec.circle(dec,[3.6*x[0] for x in vt],size=6, color="red", alpha=0.5)
+
+show(column(p,pv,pdec))
 
 # -fin.
 
