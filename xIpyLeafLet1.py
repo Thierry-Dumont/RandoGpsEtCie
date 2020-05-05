@@ -23,14 +23,13 @@ print("carte:",name_map)
 print("\nChoix du parcours :")
 filegpx= get_gpx()
 
-# Les cartes qu'on va utiliser :
-
 # On lit le fichier des positions gps, et on récupère les positions sous forme d'une liste de couples (latitude,longitude) :
 
 gpx_file= open(filegpx,"r")
 gpx = gpxpy.parse(gpx_file)
 points=gpx.tracks[0].segments[0].points
 
+# on récupère les dates de début et de fin :
 date_debut= gpx.get_time_bounds().start_time.astimezone().strftime("le %d %m %Y à %H heures %M minutes %S secondes")
 date_fin= gpx.get_time_bounds().end_time.astimezone().strftime("le %d %m %Y à %H heures %M minutes %S secondes")
 print("\nHeure de début : ",date_debut+".","\nHeure de fin :",date_fin+".\n")
@@ -41,20 +40,15 @@ l=[(p.latitude,p.longitude) for p in points]
 c=[sum(x) for x in zip(*l)]
 center=(c[0]/len(l),c[1]/len(l))# le "centre" (la moyenne).
 
-
 # Et on crée la carte, centrée en "center". Le facteur de zoom initial est un peu pifométrique: 
-
-
-
 m = Map(basemap=usedmap,center=center, zoom=15,scroll_wheel_zoom=True)
 
-
+# Decommenter de zoom_slider à m.add_control si in veut un tirette de zoom :
 # On ajoute une petite tirette pour le zoom:
 # zoom_slider = IntSlider(description='Zoom:', min=12, max=30, value=15)
 # jslink((zoom_slider, 'value'), (m, 'zoom'))
 # widget_control1 = WidgetControl(widget=zoom_slider, position='topright')
 # m.add_control(widget_control1)
-
 
 # Bien. Maintenant on ajoute la trajectoire, qu'on a déja calculée. On ajoute aussi un bouton "Plein écran".
 
@@ -87,7 +81,6 @@ m.add_layer(line)
 
 delta=1000. # 1 km.
 
-
 distance_parcourue=0.0
 dists=[0.]
 next = delta
@@ -104,7 +97,6 @@ for i,point in enumerate(points[1:]):
                             draggable=False))
 
 print("Distance totale parcourue : %8.2f"%distance_parcourue,"mêtres.")
-
 
 # Placer les marqueurs sur la carte:
 
@@ -124,7 +116,7 @@ m.add_layer(circle_marker2)
 m.add_layer(circle_marker1)
 
 # ### La carte : ###
-# 
+
 m
 
 # ### L'altitude au cours du parcours : ###
@@ -146,7 +138,6 @@ up= reduce(lambda a,b: a+max(b,0),z)
 down= reduce(lambda a,b: a+max(-b,0),z)
 
 print("Montée :%8.2f"% up,", descente :%8.2f"% down,"(mêtres).")
-
 
 # ### Vitesse (en km/h) en fonction du temps (en secondes) : ###
 
