@@ -31,7 +31,10 @@ gpx_file= open(filegpx,"r")
 gpx = gpxpy.parse(gpx_file)
 points=gpx.tracks[0].segments[0].points
 
-print("\nHeure de début : ",gpx.get_time_bounds().start_time,"Heure de fin :",gpx.get_time_bounds().end_time)
+date_debut= gpx.get_time_bounds().start_time.astimezone().strftime("le %d %m %Y à %H heures %M minutes %S secondes")
+date_fin= gpx.get_time_bounds().end_time.astimezone().strftime("le %d %m %Y à %H heures %M minutes %S secondes")
+print("\nHeure de début : ",date_debut+".","\nHeure de fin :",date_fin+".\n")
+
 # Il faut centrer la carte. Pour cela on calcule la moyenne des latitudes et des longitudes:
 
 l=[(p.latitude,p.longitude) for p in points]
@@ -142,7 +145,7 @@ z=[x[1]-x[0] for x in
 up= reduce(lambda a,b: a+max(b,0),z)
 down= reduce(lambda a,b: a+max(-b,0),z)
 
-print("montée :%8.2f"% up,", descente :%8.2f"% down,"(mêtres).")
+print("Montée :%8.2f"% up,", descente :%8.2f"% down,"(mêtres).")
 
 
 # ### Vitesse (en km/h) en fonction du temps (en secondes) : ###
@@ -157,7 +160,7 @@ pv.line([v[1] for v in vt],[v[0]*3.6 for v in vt], legend_label="Vitesse", line_
 
 # ### Vitesse moyenne : ###
 
-print("Vitesse moyenne:","%8.2f"% (3.6*distance_parcourue/(points[-1].time - points[0].time).total_seconds()),"km/h.")
+print("Vitesse moyenne:","%6.2f"% (3.6*distance_parcourue/(points[-1].time - points[0].time).total_seconds()),"km/h.")
 
 display(m)
 
