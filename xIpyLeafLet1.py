@@ -8,7 +8,7 @@ from bokeh.plotting import figure, output_file, show
 from bokeh.io import output_notebook
 from bokeh.layouts import row, column
 from functools import reduce
-from chooser import get_gpx, choose 
+from chooser import get_gpx, choose_map 
 output_notebook()
 
 # maps
@@ -16,7 +16,7 @@ print("Choix de la carte :")
 maps={"OpenStreetMap":basemaps.OpenStreetMap.Mapnik,
           "TopoMap":basemaps.OpenTopoMap,
           "HikeBike":basemaps.HikeBike,"MtbMap":basemaps.MtbMap}
-name_map,usedmap= choose(maps)
+name_map,usedmap= choose_map(maps)
 print("carte:",name_map)
 
 # Le fichier des traces gps :
@@ -43,16 +43,17 @@ center=(c[0]/len(l),c[1]/len(l))# le "centre" (la moyenne).
 # Et on crée la carte, centrée en "center". Le facteur de zoom initial est un peu pifométrique: 
 m = Map(basemap=usedmap,center=center, zoom=15,scroll_wheel_zoom=True)
 
-# Decommenter de zoom_slider à m.add_control si in veut un tirette de zoom :
-# On ajoute une petite tirette pour le zoom:
+# Decommenter de: zoom_slider à m.add_control si in veut un tirette de zoom :
+#
 # zoom_slider = IntSlider(description='Zoom:', min=12, max=30, value=15)
 # jslink((zoom_slider, 'value'), (m, 'zoom'))
 # widget_control1 = WidgetControl(widget=zoom_slider, position='topright')
 # m.add_control(widget_control1)
 
-# Bien. Maintenant on ajoute la trajectoire, qu'on a déja calculée. On ajoute aussi un bouton "Plein écran".
+# Bien. Maintenant on ajoute la trajectoire, qu'on a déja calculée.
+# On ajoute aussi un bouton "Plein écran".
 
-type_line= "Ant" # type de ligne pour la trajectoire (toute autre avaleur que "Ant" produit une "PolyLine") 
+type_line= "Ant" # type de ligne pour la trajectoire (toute autre valeur que "Ant" produit une "PolyLine") 
 
 if type_line == "Ant":
     line= AntPath(
@@ -75,7 +76,8 @@ m.add_layer(line)
 
 # ### Quelques calculs: ###
 # 
-# - Les distances entre les points successifs. C'est un service fourni par geopy (géodésiques sur l'ellipsoïde terrestre).
+# - Les distances entre les points successifs: 
+#   c'est un service fourni par geopy (géodésiques sur l'ellipsoïde terrestre).
 # - La distance globale porcourue.
 # - Un "marker" tous les "delta" mêtres. 
 
@@ -98,12 +100,7 @@ for i,point in enumerate(points[1:]):
 
 print("Distance totale parcourue : %8.2f"%distance_parcourue,"mêtres.")
 
-# Placer les marqueurs sur la carte:
 
-marker_cluster = MarkerCluster(
-    markers=marks
-)
-m.add_layer(marker_cluster);
 
 # Des marqueurs pour le début et la fin du parcours :
 circle_marker1 = CircleMarker(
@@ -112,8 +109,15 @@ circle_marker1 = CircleMarker(
 circle_marker2 = CircleMarker(
     location = (points[0].latitude,points[0].longitude),
     radius = 7,color = "green",fill_color = "green")
-m.add_layer(circle_marker2)
-m.add_layer(circle_marker1)
+marks+=[circle_marker1,circle_marker2]
+
+# Placer les marqueurs sur la carte:
+
+marker_cluster = MarkerCluster(
+    markers=marks
+)
+m.add_layer(marker_cluster);
+
 
 # ### La carte : ###
 

@@ -12,9 +12,9 @@ def get_gpx():
             choix= int(prechoix)
             if choix in range(0,len(lf)):
                 return lf[choix]
-def choose(l):
+def choose_map(l):
     #
-    #choose in a list of maps proviers.
+    #choose in a list of maps providers.
     #
     print("Cartes disponibles :")
     for s in  enumerate(l.keys()):
