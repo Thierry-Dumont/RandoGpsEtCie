@@ -35,3 +35,12 @@ Avec "pip" (mais on peut sûrement utiliser conda):
 Si jupyterlab est nécessaire:
 - jupyterlab labextension install @jupyter-widgets/jupyterlab-manager
 
+ ## Pour cacher le code:
+
+- pip install --user jupyter_contrib_nbextensions
+
+- jupyter contrib-nbextension install --user
+
+Plus de détails [ici](https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/)
+
+ Ensuite il faut lancer le notebook dont on veut cacher le code, puis dans le menu "Edit" accéder à "nbextensions config" etc.
