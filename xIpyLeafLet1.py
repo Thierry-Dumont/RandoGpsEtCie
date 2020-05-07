@@ -168,7 +168,9 @@ pv.line([v[1] for v in vt],[v[0]*3.6 for v in vt],  line_width=2)
 # ### Vitesse moyenne : ###
 
 
-print("Vitesse moyenne : %8.2f"% (3.6*distance_parcourue/(points[-1].time - points[0].time).total_seconds()),"km/h.")
+print("Vitesse moyenne : %8.2f"% (3.6*distance_parcourue/
+                                  (gpx.get_time_bounds()[1]-
+                                   gpx.get_time_bounds()[0]).seconds),"km/h.")
 
 
 # Vitesse en fonction de la déclivité
