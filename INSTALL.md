@@ -7,7 +7,7 @@ Installer pip pour python3:
 (ou la commande correspondante si votre système n'est pas "à la Debian".)
 
 Avec "pip" (mais on peut sûrement utiliser conda):
-(ajouter l'option --user --user pour installer dans votre home dir.).
+(ajouter l'option --user pour installer dans votre home dir.).
 
 - pip install gpxpy
 - pip install ipyleaflet
