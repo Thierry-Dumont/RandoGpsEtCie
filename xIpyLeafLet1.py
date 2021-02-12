@@ -136,7 +136,16 @@ p = figure(title="Altitude /distance", x_axis_label='Distance parcourue', y_axis
            width=800,height=300)
 p.line(dists,[point.elevation for point in points] , line_width=2)
 
+# ### L'altitude en fonction du temps au cours du parcours : ###
+p = figure(title="Altitude / temps", x_axis_label='Temps (heures)', y_axis_label='altitude',
+           width=800,height=300)
+heuredep= points[0].time
+p.line([(point.time-heuredep).seconds/3600. for point in points],[point.elevation for point in points] , line_width=2)
+show(p)
 
+p = figure(title="Altitude /distance", x_axis_label='Distance parcourue', y_axis_label='altitude',
+           width=800,height=300)
+p.line(dists,[point.elevation for point in points] , line_width=2)
 
 # #### Cumul des montées et des descentes : ####
 # 
